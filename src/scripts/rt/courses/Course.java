@@ -9,7 +9,7 @@ import org.tribot.api2007.WebWalking;
 import org.tribot.api2007.Skills.SKILLS;
 import org.tribot.api2007.types.RSTile;
 
-import scripts.rt.main.AK47Rooftops;
+import scripts.rt.main.SEngineerRooftops;
 import scripts.rt.support.ABC2Support;
 import scripts.rt.utils.Utils;
 
@@ -127,7 +127,7 @@ public abstract class Course {
 		General.println("[Rooftops] Successfully handled obstacle");
 		
 		if (lootMarks()) {
-			AK47Rooftops.marks += 1;
+			SEngineerRooftops.marks += 1;
 		}
 
 		return true;
@@ -160,7 +160,7 @@ public abstract class Course {
 		General.println("[Rooftops] Successfully handled obstacle");
 		
 		if (lootMarks()) {
-			AK47Rooftops.marks += 1;
+			SEngineerRooftops.marks += 1;
 		}
 
 		return true;
@@ -171,8 +171,8 @@ public abstract class Course {
 	 * @return true/false
 	 */
 	public boolean hasUnlockedNewCourse() {
-		if(Skills.getActualLevel(SKILLS.AGILITY) % 10 == 0 && Skills.getActualLevel(SKILLS.AGILITY) > AK47Rooftops.courseStartLevel) {
-			AK47Rooftops.courseStartLevel = Skills.getActualLevel(SKILLS.AGILITY);
+		if(Skills.getActualLevel(SKILLS.AGILITY) % 10 == 0 && Skills.getActualLevel(SKILLS.AGILITY) > SEngineerRooftops.courseStartLevel) {
+			SEngineerRooftops.courseStartLevel = Skills.getActualLevel(SKILLS.AGILITY);
 			return true;
 		}
 		return false;
