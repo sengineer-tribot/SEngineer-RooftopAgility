@@ -35,10 +35,6 @@ public class QuestSupport {
 		 * @return true if completed, false otherwise
 		 */
 		public boolean isComplete() {
-			if (this == SHIELD_OF_ARRAV) {
-				return isShieldOfArravComplete();
-			}
-
 			return Game.getSetting(setting) >= complete;
 		}
 
@@ -48,10 +44,6 @@ public class QuestSupport {
 		 * @return true if started, false otherwise
 		 */
 		public boolean isStarted() {
-			if (this == SHIELD_OF_ARRAV) {
-				return isShieldOfArravStarted();
-			}
-
 			return Game.getSetting(setting) != notStarted && !isComplete();
 		}
 
@@ -61,32 +53,7 @@ public class QuestSupport {
 		 * @return true if not started, false otherwise
 		 */
 		public boolean isNotStarted() {
-			if (this == SHIELD_OF_ARRAV) {
-				return isShieldOfArravNotStarted();
-			}
-
 			return Game.getSetting(setting) == notStarted;
-		}
-
-		private boolean isShieldOfArravComplete() {
-			int black = Game.getSetting(146);
-			int phoenix = Game.getSetting(145);
-
-			return black == 4 || phoenix == 7;
-		}
-
-		private boolean isShieldOfArravStarted() {
-			int black = Game.getSetting(146);
-			int phoenix = Game.getSetting(145);
-
-			return black != 0 && phoenix != 0 && !isShieldOfArravComplete();
-		}
-
-		private boolean isShieldOfArravNotStarted() {
-			int black = Game.getSetting(146);
-			int phoenix = Game.getSetting(145);
-
-			return black == 0 && phoenix == 0;
 		}
     }
 
