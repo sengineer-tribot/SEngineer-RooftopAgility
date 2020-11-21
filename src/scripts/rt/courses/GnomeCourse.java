@@ -33,7 +33,7 @@ public class GnomeCourse extends Course {
 		course = Utils.add(course, 
 				new Obstacle("Tree branch", null, new RSArea(new RSTile(2487, 3420, 0), new RSTile(2487, 3420, 0)), false));
 		course = Utils.add(course, 
-				new Obstacle("Obstacle net", null, new RSArea(new RSTile(2483, 3427, 0), new RSTile(2488, 3427, 0)), false));
+				new Obstacle("Obstacle net", null, new RSArea(new RSTile(2483, 3427, 0), new RSTile(2488, 3428, 0)), false));
 
 		course = Utils.add(course, 
 				new Obstacle("Obstacle pipe", null, new RSArea(new RSTile(2484, 3437, 0), new RSTile(2487, 3437, 0)), false));
