@@ -90,7 +90,7 @@ public abstract class Course {
 
 		if (obstacle.getStartTile() != null) {
 			General.println("[Rooftops] Walking to obstacle start tile");
-			WebWalking.walkTo(obstacle.getStartTile());
+			Utils.webWalkTo(obstacle.getStartTile());
 			Timing.waitCondition(() -> !Player.isMoving(), 2000);
 		}
 

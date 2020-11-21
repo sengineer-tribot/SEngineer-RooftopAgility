@@ -12,6 +12,7 @@ import org.tribot.api2007.Inventory;
 import org.tribot.api2007.Objects;
 import org.tribot.api2007.PathFinding;
 import org.tribot.api2007.Player;
+import org.tribot.api2007.WebWalking;
 import org.tribot.api2007.types.RSGroundItem;
 import org.tribot.api2007.types.RSObject;
 
@@ -43,7 +44,7 @@ public class Utils {
 	}
 
 	/**
-	 * Walks to a location if the Player is not already there
+	 * Dax Walks to a location if the Player is not already there
 	 *
 	 * @param destination - place to walk to
 	 */
@@ -51,6 +52,19 @@ public class Utils {
 		while (!isDistanceFrom(destination, 3)) {
 			General.println("[Rooftops] DaxWalking to " + destination.toString());
 			DaxWalker.walkTo(destination);
+			Timing.waitCondition(() -> !Player.isMoving(), 5000);
+		}
+	}
+	
+	/**
+	 * Web Walks to a location if the Player is not already there
+	 *
+	 * @param destination - place to walk to
+	 */
+	public static void webWalkTo(final Positionable destination) {
+		while (!isDistanceFrom(destination, 3)) {
+			General.println("[Rooftops] WebWalking to " + destination.toString());
+			WebWalking.walkTo(destination);
 			Timing.waitCondition(() -> !Player.isMoving(), 5000);
 		}
 	}
