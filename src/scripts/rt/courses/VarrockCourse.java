@@ -18,7 +18,7 @@ public class VarrockCourse extends Course {
 
 		name = "Varrock Rooftop";
 		marks = true;
-		courseStart = new RSTile(3221, 3414, 0);
+		courseStart = new RSTile(3227, 3417, 0);
 		maxTimeout = 12000;
 
 		course = Utils.add(course, 
