@@ -21,20 +21,22 @@ public class ArdougneCourse extends Course {
 		courseStart = new RSTile(2673, 3297, 0);
 		maxTimeout = 10000;
 
-		roofUp = new Obstacle("Wooden Beams", courseStart, new RSArea(new RSTile(2671, 3299, 3), new RSTile(2671, 3299, 3)));
+		course = Utils.add(course, 
+				new Obstacle("Wooden Beams", courseStart, new RSArea(new RSTile(2671, 3299, 3), new RSTile(2671, 3299, 3)), false));
 
 		course = Utils.add(course, 
-				new Obstacle("Gap", new RSTile(2671, 3309, 3), new RSArea(new RSTile(2665, 3318, 3), new RSTile(2665, 3318, 3))));
+				new Obstacle("Gap", new RSTile(2671, 3309, 3), new RSArea(new RSTile(2665, 3318, 3), new RSTile(2665, 3318, 3)), true));
 		course = Utils.add(course, 
-				new Obstacle("Plank", null, new RSArea(new RSTile(2657, 3318, 3), new RSTile(2657, 3318, 3))));
+				new Obstacle("Plank", null, new RSArea(new RSTile(2657, 3318, 3), new RSTile(2657, 3318, 3)), true));
 		course = Utils.add(course, 
-				new Obstacle("Gap", null, new RSArea(new RSTile(2653, 3314, 3), new RSTile(2653, 3314, 3))));
+				new Obstacle("Gap", null, new RSArea(new RSTile(2653, 3314, 3), new RSTile(2653, 3314, 3)), true));
 		course = Utils.add(course, 
-				new Obstacle("Gap", new RSTile(2653, 3310, 3), new RSArea(new RSTile(2651, 3309, 3), new RSTile(2651, 3309, 3))));
+				new Obstacle("Gap", new RSTile(2653, 3310, 3), new RSArea(new RSTile(2651, 3309, 3), new RSTile(2651, 3309, 3)), true));
 		course = Utils.add(course, 
-				new Obstacle("Steep roof", null, new RSArea(new RSTile(2656, 3297, 3), new RSTile(2656, 3297, 3))));
+				new Obstacle("Steep roof", null, new RSArea(new RSTile(2656, 3297, 3), new RSTile(2656, 3297, 3)), true));
 		
-		roofDown = new Obstacle("Gap", null, new RSArea(new RSTile(2668, 3297, 0), new RSTile(2668, 3297, 0)));
+		course = Utils.add(course, 
+				new Obstacle("Gap", null, new RSArea(new RSTile(2668, 3297, 0), new RSTile(2668, 3297, 0)), false));
 
 	}
 }

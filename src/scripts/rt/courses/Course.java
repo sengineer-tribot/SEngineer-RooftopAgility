@@ -33,14 +33,7 @@ public abstract class Course {
 	protected RSTile courseStart;
 	protected int maxTimeout;
 	
-	protected Obstacle roofUp;
 	protected Obstacle[] course = {};
-	protected Obstacle roofDown;
-	
-
-	// ~~~~~~~~
-	
-	private boolean hasFallen;
 	
 	// ~~~~~~~~
 
@@ -50,18 +43,11 @@ public abstract class Course {
 
 		while (true) {
 
-			hasFallen = false;
-			handleObstacleNoFail(roofUp);
-
 			for (final Obstacle obstacle : course) {
-				if (!handleObstacleWithFail(obstacle)) {
+				if (!handleObstacle(obstacle)) {
 					break;
 				}
 				General.sleep(500, 900);
-			}
-
-			if (!hasFallen) {
-				handleObstacleNoFail(roofDown);
 			}
 
 			if (hasUnlockedNewCourse()) {
@@ -101,7 +87,7 @@ public abstract class Course {
 	 * @return true/false
 	 * 
 	 */
-	public boolean handleObstacleWithFail(final Obstacle obstacle) {
+	public boolean handleObstacle(final Obstacle obstacle) {
 
 		if (obstacle.getStartTile() != null) {
 			General.println("[Rooftops] Walking to obstacle start tile");
@@ -113,49 +99,23 @@ public abstract class Course {
 			if (Utils.interactWithObject(obstacle.getObstacle(), 1)) {
 				General.println("[Rooftops] Attempting to handle obstacle " + obstacle.getObstacle());
 				abc2Support.runAntiBan();
-				Timing.waitCondition(() -> (obstacle.hasLanded() || obstacle.hasFallen()), maxTimeout);
+
+				if(obstacle.canFail()) {
+					Timing.waitCondition(() -> (obstacle.hasLanded() || obstacle.hasFallen()), maxTimeout);
+				}
+				else {
+					Timing.waitCondition(() -> obstacle.hasLanded(), maxTimeout);
+				}
 			}
 
-			if (obstacle.hasFallen()) {
-				General.println("[Rooftops] Oops.. we've fallen");
-				hasFallen = true;
-				return false;
+			if (obstacle.canFail()) {
+				if (obstacle.hasFallen()) {
+					General.println("[Rooftops] Oops.. we've fallen");
+					return false;
+				}
 			}
 		}
 		
-		General.sleep(200, 300);
-		General.println("[Rooftops] Successfully handled obstacle");
-		
-		if (lootMarks()) {
-			SEngineerRooftops.marks += 1;
-		}
-
-		return true;
-	}
-	
-	/**
-	 * 
-	 * Completes an obstacle on an obstacle course which cannot be failed
-	 * 
-	 * @param obstacle - obstacle to complete
-	 * 
-	 * @return true/false
-	 * 
-	 */
-	public boolean handleObstacleNoFail(final Obstacle obstacle) {
-		if (obstacle.getStartTile() != null) {
-			General.println("[Rooftops] Walking to obstacle start tile");
-			WebWalking.walkTo(obstacle.getStartTile());
-			Timing.waitCondition(() -> !Player.isMoving(), 3000);
-		}
-
-		while (!obstacle.hasLanded()) {
-			if (Utils.interactWithObject(obstacle.getObstacle(), 1)) {
-				General.println("[Rooftops] Attempting to handle obstacle " + obstacle.getObstacle());
-				Timing.waitCondition(() -> obstacle.hasLanded(), 3000);
-			}
-		}
-
 		General.sleep(200, 300);
 		General.println("[Rooftops] Successfully handled obstacle");
 		
@@ -171,7 +131,8 @@ public abstract class Course {
 	 * @return true/false
 	 */
 	public boolean hasUnlockedNewCourse() {
-		if(Skills.getActualLevel(SKILLS.AGILITY) % 10 == 0 && Skills.getActualLevel(SKILLS.AGILITY) > SEngineerRooftops.courseStartLevel) {
+		if (Skills.getActualLevel(SKILLS.AGILITY) % 10 == 0
+				&& Skills.getActualLevel(SKILLS.AGILITY) > SEngineerRooftops.courseStartLevel) {
 			SEngineerRooftops.courseStartLevel = Skills.getActualLevel(SKILLS.AGILITY);
 			return true;
 		}

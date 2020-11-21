@@ -18,6 +18,7 @@ public class Obstacle {
 	private final String obstacle;
 	private final RSTile startTile;
 	private final RSArea landArea;
+	private final boolean canFail;
 
 	/**
 	 * 
@@ -25,10 +26,11 @@ public class Obstacle {
 	 * @param startTile - can be null - the tile to walk to before attempting to click the obstacle
 	 * @param landArea - the area we land on once we complete an obstacle
 	 */
-	public Obstacle(final String obstacle, final RSTile startTile, final RSArea landArea) {
+	public Obstacle(final String obstacle, final RSTile startTile, final RSArea landArea, final boolean canFail) {
 		this.obstacle = obstacle;
 		this.startTile = startTile;
 		this.landArea = landArea;
+		this.canFail = canFail;
 	}
 
 	public String getObstacle() {
@@ -41,6 +43,10 @@ public class Obstacle {
 
 	public RSArea getLandingArea() {
 		return this.landArea;
+	}
+	
+	public boolean canFail() {
+		return this.canFail;
 	}
 	
 	public boolean hasLanded() {

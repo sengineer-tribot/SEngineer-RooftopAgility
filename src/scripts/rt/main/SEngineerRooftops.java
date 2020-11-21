@@ -41,7 +41,7 @@ import scripts.rt.utils.Utils;
  */
 public class SEngineerRooftops extends Script implements PaintInfo, Painting {
 
-	private final Double scriptVersion = 2.07;
+	private final Double scriptVersion = 3.00;
 
 	private final FluffeesPaint display = new FluffeesPaint(
 			this, FluffeesPaint.PaintLocations.TOP_RIGHT_CHATBOX,
@@ -111,8 +111,7 @@ public class SEngineerRooftops extends Script implements PaintInfo, Painting {
 			return new AlKharidCourse();
 		} else if (Skills.getActualLevel(SKILLS.AGILITY) >= 10) {
 			return new DraynorCourse();
-		}
-		else {
+		} else {
 			return new GnomeCourse();
 		}
 	}

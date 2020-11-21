@@ -21,24 +21,26 @@ public class PollniveachCourse extends Course {
 		courseStart = new RSTile(3352, 2963, 0);
 		maxTimeout = 10000;
 
-		roofUp = new Obstacle("Basket", courseStart, new RSArea(new RSTile(3351, 2964, 1), new RSTile(3351, 2964, 1)));
+		course = Utils.add(course, 
+				new Obstacle("Basket", courseStart, new RSArea(new RSTile(3351, 2964, 1), new RSTile(3351, 2964, 1)), false));
 		
 		course = Utils.add(course, 
-				new Obstacle("Market stall", null, new RSArea(new RSTile(3352, 2973, 1), new RSTile(3352, 2973, 1))));
+				new Obstacle("Market stall", null, new RSArea(new RSTile(3352, 2973, 1), new RSTile(3352, 2973, 1)), true));
 		course = Utils.add(course, 
-				new Obstacle("Banner", null, new RSArea(new RSTile(3360, 2977, 1), new RSTile(3360, 2977, 1))));
+				new Obstacle("Banner", null, new RSArea(new RSTile(3360, 2977, 1), new RSTile(3360, 2977, 1)), true));
 		course = Utils.add(course, 
-				new Obstacle("Gap", null, new RSArea(new RSTile(3366, 2976, 1), new RSTile(3366, 2976, 1))));
+				new Obstacle("Gap", null, new RSArea(new RSTile(3366, 2976, 1), new RSTile(3366, 2976, 1)), true));
 		course = Utils.add(course, 
-				new Obstacle("Tree", null, new RSArea(new RSTile(3368, 2982, 1), new RSTile(3368, 2982, 1))));
+				new Obstacle("Tree", null, new RSArea(new RSTile(3368, 2982, 1), new RSTile(3368, 2982, 1)), true));
 		course = Utils.add(course, 
-				new Obstacle("Rough wall", null, new RSArea(new RSTile(3365, 2983, 2), new RSTile(3365, 2983, 2))));
+				new Obstacle("Rough wall", null, new RSArea(new RSTile(3365, 2983, 2), new RSTile(3365, 2983, 2)), true));
 		course = Utils.add(course, 
-				new Obstacle("Monkeybars", null, new RSArea(new RSTile(3358, 2991, 2), new RSTile(3358, 2991, 2))));
+				new Obstacle("Monkeybars", null, new RSArea(new RSTile(3358, 2991, 2), new RSTile(3358, 2991, 2)), true));
 		course = Utils.add(course, 
-				new Obstacle("Tree", null, new RSArea(new RSTile(3359, 3000, 2), new RSTile(3359, 3000, 2))));
+				new Obstacle("Tree", null, new RSArea(new RSTile(3359, 3000, 2), new RSTile(3359, 3000, 2)), true));
 
-		roofDown = new Obstacle("Drying line", null, new RSArea(new RSTile(3363, 2998, 0), new RSTile(3363, 2998, 0)));
+		course = Utils.add(course, 
+				new Obstacle("Drying line", null, new RSArea(new RSTile(3363, 2998, 0), new RSTile(3363, 2998, 0)), false));
 
 	}
 }
