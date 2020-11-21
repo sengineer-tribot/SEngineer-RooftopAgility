@@ -35,7 +35,7 @@ public class AlKharidCourse extends Course {
 		course = Utils.add(course, 
 				new Obstacle("Roof top beams", null, new RSArea(new RSTile(3316, 3180, 3), new RSTile(3316, 3180, 3)), true));
 		course = Utils.add(course, 
-				new Obstacle("Tightrope", null, new RSArea(new RSTile(3302, 3187, 3), new RSTile(3302, 3187, 3)), true));
+				new Obstacle("Tightrope", null, new RSArea(new RSTile(3302, 3187, 3), new RSTile(3305, 3189, 3)), true));
 
 		course = Utils.add(course,
 				new Obstacle("Gap", null, new RSArea(new RSTile(3299, 3194, 0), new RSTile(3299, 3194, 0)), false));
