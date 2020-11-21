@@ -49,14 +49,10 @@ public class SEngineerRooftops extends Script implements PaintInfo, Painting {
 			new Color[] { new Color(39, 95, 175) }, 1, false, 5, 3, 0);
 
 	private Course course = new DraynorCourse();
-	private int xp = Skills.getXP(SKILLS.AGILITY);
+	public static int xp = Skills.getXP(SKILLS.AGILITY);
 	public static int level = Skills.getActualLevel(SKILLS.AGILITY);
 	public static int courseStartLevel = level;
 	public static int marks = 0;
-
-	public boolean hasPrerequisites() {
-		return Skills.getActualLevel(SKILLS.AGILITY) >= 10;
-	}
 
 	@Override
 	public void run() {
