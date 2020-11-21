@@ -21,7 +21,7 @@ import scripts.rt.utils.Utils;
  * 
  */
 public abstract class Course {
-	
+
 	// ~~~~~~~~
 
 	private ABC2Support abc2Support = ABC2Support.getInstance();
@@ -32,9 +32,9 @@ public abstract class Course {
 	protected boolean marks;
 	protected RSTile courseStart;
 	protected int maxTimeout;
-	
+
 	protected Obstacle[] course = {};
-	
+
 	// ~~~~~~~~
 
 	public void doCourse() {
@@ -42,7 +42,6 @@ public abstract class Course {
 		Utils.daxWalkTo(courseStart);
 
 		while (true) {
-
 			for (final Obstacle obstacle : course) {
 				if (!handleObstacle(obstacle)) {
 					break;
@@ -95,15 +94,14 @@ public abstract class Course {
 			Timing.waitCondition(() -> !Player.isMoving(), 2000);
 		}
 
-		while (!obstacle.hasLanded()) {			
+		while (!obstacle.hasLanded()) {
 			if (Utils.interactWithObject(obstacle.getObstacle(), 1)) {
 				General.println("[Rooftops] Attempting to handle obstacle " + obstacle.getObstacle());
 				abc2Support.runAntiBan();
 
-				if(obstacle.canFail()) {
+				if (obstacle.canFail()) {
 					Timing.waitCondition(() -> (obstacle.hasLanded() || obstacle.hasFallen()), maxTimeout);
-				}
-				else {
+				} else {
 					Timing.waitCondition(() -> obstacle.hasLanded(), maxTimeout);
 				}
 			}
@@ -115,19 +113,21 @@ public abstract class Course {
 				}
 			}
 		}
-		
+
 		General.sleep(200, 300);
 		General.println("[Rooftops] Successfully handled obstacle");
-		
+
 		if (lootMarks()) {
 			SEngineerRooftops.marks += 1;
 		}
 
 		return true;
 	}
-	
+
 	/**
-	 * Checks if the players current agility level is a multiple of 10 and not the same as the starting level
+	 * Checks if the players current agility level is a multiple of 10 and not the
+	 * same as the starting level
+	 * 
 	 * @return true/false
 	 */
 	public boolean hasUnlockedNewCourse() {

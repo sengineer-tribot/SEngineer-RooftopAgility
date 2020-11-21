@@ -105,17 +105,17 @@ public class Utils {
 	 * Interacts with an object using a specified button
 	 *
 	 * @param object - object to interact with
-	 * @param button   - button to click with
+	 * @param button - button to click with
 	 * @return true/false
 	 */
 	public static boolean interactWithObject(final String object, final int button) {
 		final RSObject[] objects = Objects.findNearest(25, object);
 
-		if(objects.length == 0 || !isObjectClose(objects[0])) {
+		if (objects.length == 0 || !isObjectClose(objects[0])) {
 			return false;
 		}
 
-		if(!objects[0].isClickable()) {
+		if (!objects[0].isClickable()) {
 			General.println("[Rooftops] Turning camera to face: " + object);
 			Camera.turnToTile(objects[0].getPosition());
 			General.sleep(100, 200);
@@ -155,7 +155,7 @@ public class Utils {
 
 		final RSGroundItem[] items = GroundItems.findNearest(name);
 
-		if(items.length == 0 || !isItemClose(items[0])) {
+		if (items.length == 0 || !isItemClose(items[0])) {
 			return false;
 		}
 
@@ -175,7 +175,6 @@ public class Utils {
 
 		return getInventoryItemCount(name) > count;
 	}
-
 
 	/**
 	 * Taken from apache-common-lang ArrayUtils

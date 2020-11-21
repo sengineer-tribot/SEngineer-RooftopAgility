@@ -44,11 +44,11 @@ public class Obstacle {
 	public RSArea getLandingArea() {
 		return this.landArea;
 	}
-	
+
 	public boolean canFail() {
 		return this.canFail;
 	}
-	
+
 	public boolean hasLanded() {
 		return getLandingArea().contains(Player.getPosition());
 	}
@@ -56,7 +56,7 @@ public class Obstacle {
 	public boolean hasFallen() {
 		return Player.getPosition().getPlane() == 0;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Obstacle: " + obstacle + " || Start Tile: " + getStartTile().toString() + " || Landing Area: "

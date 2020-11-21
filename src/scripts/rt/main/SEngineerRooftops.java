@@ -28,7 +28,7 @@ import scripts.rt.support.QuestSupport;
 import scripts.rt.utils.Utils;
 
 @ScriptManifest(authors = {
-		"SEngineer" }, category = "Agility", name = "SEngineer's Rooftops", version = 2.07, description = "Rooftop Agility", gameMode = 1)
+		"SEngineer" }, category = "Agility", name = "SEngineer's Rooftops", version = 3.00, description = "Rooftop Agility", gameMode = 1)
 
 /**
  *
