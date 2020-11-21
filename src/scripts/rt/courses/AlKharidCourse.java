@@ -19,7 +19,7 @@ public class AlKharidCourse extends Course {
 		name = "Al Kharid Rooftop";
 		marks = true;
 		courseStart = new RSTile(3275, 3197, 0);
-		maxTimeout = 10000;
+		maxTimeout = 11000;
 
 		course = Utils.add(course, 
 				new Obstacle("Rough wall", courseStart, new RSArea(new RSTile(3273, 3192, 3), new RSTile(3273, 3192, 3)), false));
