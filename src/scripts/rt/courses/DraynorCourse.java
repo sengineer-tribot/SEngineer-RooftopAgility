@@ -27,7 +27,7 @@ public class DraynorCourse extends Course {
 		course = Utils.add(course, 
 				new Obstacle("Tightrope", null, new RSArea(new RSTile(3090, 3276, 3), new RSTile(3090, 3276, 3)), true));
 		course = Utils.add(course, 
-				new Obstacle("Tightrope", null, new RSArea(new RSTile(3092, 3266, 3), new RSTile(3092, 3266, 3)), true));
+				new Obstacle("Tightrope", null, new RSArea(new RSTile(3094, 3267, 3), new RSTile(3092, 3266, 3)), true));
 		course = Utils.add(course, 
 				new Obstacle("Narrow wall", null, new RSArea(new RSTile(3088, 3261, 3), new RSTile(3088, 3261, 3)), true));
 		course = Utils.add(course, 
