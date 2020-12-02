@@ -1,7 +1,5 @@
 package scripts.rt.utils;
 
-import java.lang.reflect.Array;
-
 import org.tribot.api.DynamicClicking;
 import org.tribot.api.General;
 import org.tribot.api.Timing;
@@ -49,7 +47,7 @@ public class Utils {
 	 * @param destination - place to walk to
 	 */
 	public static void daxWalkTo(final Positionable destination) {
-		while (!isDistanceFrom(destination, 3)) {
+		while (!isDistanceFrom(destination, 5)) {
 			General.println("[Rooftops] DaxWalking to " + destination.toString());
 			DaxWalker.walkTo(destination);
 			Timing.waitCondition(() -> !Player.isMoving(), 5000);
@@ -62,7 +60,7 @@ public class Utils {
 	 * @param destination - place to walk to
 	 */
 	public static void webWalkTo(final Positionable destination) {
-		while (!isDistanceFrom(destination, 3)) {
+		while (!isDistanceFrom(destination, 5)) {
 			General.println("[Rooftops] WebWalking to " + destination.toString());
 			WebWalking.walkTo(destination);
 			Timing.waitCondition(() -> !Player.isMoving(), 5000);
@@ -188,38 +186,6 @@ public class Utils {
 		}
 
 		return getInventoryItemCount(name) > count;
-	}
-
-	/**
-	 * Taken from apache-common-lang ArrayUtils
-	 */
-	public static <T> T[] add(final T[] array, final T element) {
-		Class<?> type;
-		if (array != null) {
-			type = array.getClass().getComponentType();
-		} else if (element != null) {
-			type = element.getClass();
-		} else {
-			throw new IllegalArgumentException("Arguments cannot both be null");
-		}
-		@SuppressWarnings("unchecked") // type must be T
-		final T[] newArray = (T[]) copyArrayGrow1(array, type);
-		newArray[newArray.length - 1] = element;
-		return newArray;
-	}
-
-	/**
-	 * Taken from apache-common-lang ArrayUtils
-	 */
-	private static Object copyArrayGrow1(final Object array, final Class<?> newArrayComponentType) {
-		if (array != null) {
-			final int arrayLength = Array.getLength(array);
-			final Object newArray = Array.newInstance(array.getClass().getComponentType(), arrayLength + 1);
-			System.arraycopy(array, 0, newArray, 0, arrayLength);
-			return newArray;
-		}
-
-		return Array.newInstance(newArrayComponentType, 1);
 	}
 
 }

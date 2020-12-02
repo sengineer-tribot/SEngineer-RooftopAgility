@@ -5,8 +5,8 @@ import org.tribot.api.Timing;
 import org.tribot.api2007.GroundItems;
 import org.tribot.api2007.Player;
 import org.tribot.api2007.Skills;
-import org.tribot.api2007.WebWalking;
 import org.tribot.api2007.Skills.SKILLS;
+import org.tribot.api2007.Walking;
 import org.tribot.api2007.types.RSTile;
 
 import scripts.rt.main.SEngineerRooftops;
@@ -32,6 +32,7 @@ public abstract class Course {
 	protected boolean marks;
 	protected RSTile courseStart;
 	protected int maxTimeout;
+	protected RSTile[] path;
 
 	protected Obstacle[] course = {};
 
@@ -51,6 +52,12 @@ public abstract class Course {
 
 			if (hasUnlockedNewCourse()) {
 				return;
+			}
+			
+			if(path != null) {
+				General.println("[Rooftops] Walking path to course start");
+				Walking.walkPath(path);
+				Timing.waitCondition(() -> Utils.isDistanceFrom(path[path.length - 1], 0) && !Player.isMoving(), 3000);
 			}
 
 			General.sleep(100, 200);
@@ -91,7 +98,7 @@ public abstract class Course {
 		if (obstacle.getStartTile() != null) {
 			General.println("[Rooftops] Walking to obstacle start tile");
 			Utils.webWalkTo(obstacle.getStartTile());
-			Timing.waitCondition(() -> !Player.isMoving(), 2000);
+			Timing.waitCondition(() -> Utils.isDistanceFrom(obstacle.getStartTile(), 0) && !Player.isMoving(), 3000);
 		}
 
 		while (!obstacle.hasLanded()) {

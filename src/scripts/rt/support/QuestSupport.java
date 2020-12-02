@@ -17,7 +17,7 @@ public class QuestSupport {
 
     public enum Quest {
 
-        PRIEST_IN_PERIL(0, 0 , 0);
+        PRIEST_IN_PERIL(302, 0, 61);
 
 		private int setting;
 		private int notStarted;

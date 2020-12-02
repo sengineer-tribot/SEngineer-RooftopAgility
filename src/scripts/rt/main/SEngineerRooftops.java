@@ -28,7 +28,7 @@ import scripts.rt.support.QuestSupport;
 import scripts.rt.utils.Utils;
 
 @ScriptManifest(authors = {
-		"SEngineer" }, category = "Agility", name = "SEngineer's Rooftops", version = 3.00, description = "Rooftop Agility", gameMode = 1)
+		"SEngineer" }, category = "Agility", name = "SEngineer's Rooftops", version = 3.15, description = "Rooftop Agility", gameMode = 1)
 
 /**
  *
@@ -41,7 +41,7 @@ import scripts.rt.utils.Utils;
  */
 public class SEngineerRooftops extends Script implements PaintInfo, Painting {
 
-	private final Double scriptVersion = 3.00;
+	private final Double scriptVersion = 3.15;
 
 	private final FluffeesPaint display = new FluffeesPaint(
 			this, FluffeesPaint.PaintLocations.TOP_RIGHT_CHATBOX,

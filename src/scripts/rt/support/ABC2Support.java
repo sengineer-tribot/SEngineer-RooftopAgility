@@ -54,7 +54,7 @@ public class ABC2Support extends ABCUtil {
 	public static ABC2Support getInstance() {
 		if (instance == null) {
 			instance = new ABC2Support();
-		}
+		} 
 
 		return instance;
 	}
