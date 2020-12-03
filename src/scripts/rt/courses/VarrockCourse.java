@@ -31,7 +31,7 @@ public class VarrockCourse extends Course {
 				new Obstacle("Edge", null, new RSArea(new RSTile(3240, 3417, 0), new RSTile(3236, 3417, 0)), false)		
 		};
 
-		path = new RSTile[] {
+		finishToStartPath = new RSTile[] {
 			    new RSTile(3227, 3416, 0),
 			    new RSTile(3223, 3414, 0)
 		};

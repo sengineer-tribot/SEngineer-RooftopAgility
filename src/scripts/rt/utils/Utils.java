@@ -187,5 +187,16 @@ public class Utils {
 
 		return getInventoryItemCount(name) > count;
 	}
+	
+	/**
+	 * Checks if an amount of time has elapsed
+	 * 
+	 * @param startTime    - the start time
+	 * @param timeToElapse - the amount of time to elapse
+	 * @return true/false
+	 */
+	public static boolean isTimeElapsed(final long startTime, final long time) {
+		return (System.currentTimeMillis() - startTime) > time;
+	}
 
 }

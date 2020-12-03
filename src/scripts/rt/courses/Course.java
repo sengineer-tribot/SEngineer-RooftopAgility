@@ -4,13 +4,16 @@ import org.tribot.api.General;
 import org.tribot.api.Timing;
 import org.tribot.api2007.GroundItems;
 import org.tribot.api2007.Player;
+import org.tribot.api2007.Players;
 import org.tribot.api2007.Skills;
 import org.tribot.api2007.Skills.SKILLS;
 import org.tribot.api2007.Walking;
+import org.tribot.api2007.WorldHopper;
 import org.tribot.api2007.types.RSTile;
 
 import scripts.rt.main.SEngineerRooftops;
 import scripts.rt.support.ABC2Support;
+import scripts.rt.utils.Numbers;
 import scripts.rt.utils.Utils;
 
 /**
@@ -32,7 +35,7 @@ public abstract class Course {
 	protected boolean marks;
 	protected RSTile courseStart;
 	protected int maxTimeout;
-	protected RSTile[] path;
+	protected RSTile[] finishToStartPath;
 
 	protected Obstacle[] course = {};
 
@@ -49,15 +52,22 @@ public abstract class Course {
 				}
 				General.sleep(500, 900);
 			}
-
+			
 			if (hasUnlockedNewCourse()) {
 				return;
 			}
 			
-			if(path != null) {
+			if(SEngineerRooftops.shouldHop) {
+				General.println("[Rooftops] Hopping world as player detected");
+				WorldHopper.changeWorld(WorldHopper.getRandomWorld(true));
+				SEngineerRooftops.lastHop = System.currentTimeMillis();
+				SEngineerRooftops.shouldHop = false;
+			}
+			
+			if(finishToStartPath != null) {
 				General.println("[Rooftops] Walking path to course start");
-				Walking.walkPath(path);
-				Timing.waitCondition(() -> Utils.isDistanceFrom(path[path.length - 1], 0) && !Player.isMoving(), 3000);
+				Walking.walkPath(finishToStartPath);
+				Timing.waitCondition(() -> Utils.isDistanceFrom(finishToStartPath[finishToStartPath.length - 1], 0) && !Player.isMoving(), 3000);
 			}
 
 			General.sleep(100, 200);
@@ -107,6 +117,10 @@ public abstract class Course {
 				abc2Support.runAntiBan();
 
 				if (obstacle.canFail()) {
+					if(Players.getAll().length > 0 && Utils.isTimeElapsed(SEngineerRooftops.lastHop, Numbers.FIVE_MINUTES)) {
+						General.println("[Rooftops] Player detected! -- Hopping when we finish the lap.");
+						SEngineerRooftops.shouldHop = true;
+					}
 					Timing.waitCondition(() -> (obstacle.hasLanded() || obstacle.hasFallen()), maxTimeout);
 				} else {
 					Timing.waitCondition(() -> obstacle.hasLanded(), maxTimeout);
