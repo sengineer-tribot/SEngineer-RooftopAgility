@@ -33,7 +33,7 @@ public class VarrockCourse extends Course {
 
 		finishToStartPath = new RSTile[] {
 			    new RSTile(3227, 3416, 0),
-			    new RSTile(3223, 3414, 0)
+			    courseStart
 		};
 	}
 }

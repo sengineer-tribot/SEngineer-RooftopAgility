@@ -16,7 +16,7 @@ public class DraynorCourse extends Course {
 
 		name = "Draynor Rooftop";
 		marks = true;
-		courseStart = new RSTile(3106, 3279, 0);
+		courseStart = new RSTile(310, 3279, 0);
 		maxTimeout = 10000;
 		
 		course = new Obstacle[] {

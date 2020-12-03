@@ -39,14 +39,24 @@ public abstract class Course {
 	protected RSTile[] finishToStartPath;
 
 	// ~~~~~~~~
+	
+	private boolean hasFallen;
+	
+	// ~~~~~~~~
 
 	public void doCourse() {
 		General.println("[Rooftops] DaxWalking to " + name + " course start");
 		Utils.daxWalkTo(courseStart);
 
 		while (true) {
+			hasFallen = false;
+			
 			for (final Obstacle obstacle : course) {
+				/**
+				 * TODO: Log out if we dont get XP
+				 */
 				if (!handleObstacle(obstacle)) {
+					hasFallen = true;
 					break;
 				}
 				General.sleep(500, 900);
@@ -63,7 +73,7 @@ public abstract class Course {
 				SEngineerRooftops.shouldHop = false;
 			}
 			
-			if(finishToStartPath != null) {
+			if(finishToStartPath != null && !hasFallen) {
 				General.println("[Rooftops] Walking path to course start");
 				Walking.walkPath(finishToStartPath);
 				Timing.waitCondition(() -> Utils.isDistanceFrom(finishToStartPath[finishToStartPath.length - 1], 0) && !Player.isMoving(), 3000);
@@ -107,7 +117,7 @@ public abstract class Course {
 		if (obstacle.getStartTile() != null) {
 			General.println("[Rooftops] Walking to obstacle start tile");
 			Utils.webWalkTo(obstacle.getStartTile());
-			Timing.waitCondition(() -> Utils.isDistanceFrom(obstacle.getStartTile(), 0) && !Player.isMoving(), 3000);
+			Timing.waitCondition(() -> Utils.isDistanceFrom(obstacle.getStartTile(), 0) && !Player.isMoving(), 4000);
 		}
 
 		while (!obstacle.hasLanded()) {

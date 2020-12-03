@@ -60,7 +60,7 @@ public class Utils {
 	 * @param destination - place to walk to
 	 */
 	public static void webWalkTo(final Positionable destination) {
-		while (!isDistanceFrom(destination, 5)) {
+		while (!isDistanceFrom(destination, 1)) {
 			General.println("[Rooftops] WebWalking to " + destination.toString());
 			WebWalking.walkTo(destination);
 			Timing.waitCondition(() -> !Player.isMoving(), 5000);

@@ -16,7 +16,7 @@ public class GnomeCourse extends Course {
 
 		name = "Gnome Agility";
 		marks = false;
-		courseStart = new RSTile(2473, 3438, 0);
+		courseStart = new RSTile(2474, 3436, 0);
 		maxTimeout = 6000;
 		
 		course = new Obstacle[] {
@@ -26,7 +26,7 @@ public class GnomeCourse extends Course {
 				new Obstacle("Balancing rope", null, new RSArea(new RSTile(2483, 3420, 2), new RSTile(2483, 3420, 2)), false),
 				new Obstacle("Tree branch", null, new RSArea(new RSTile(2487, 3420, 0), new RSTile(2487, 3420, 0)), false),
 				new Obstacle("Obstacle net", null, new RSArea(new RSTile(2483, 3427, 0), new RSTile(2488, 3428, 0)), false),
-				new Obstacle("Obstacle pipe", null, new RSArea(new RSTile(2484, 3437, 0), new RSTile(2487, 3437, 0)), false)
+				new Obstacle("Obstacle pipe", null, new RSArea(new RSTile(2483, 3436, 0), new RSTile(2488, 3437, 0)), false)
 		};
 
 	}
