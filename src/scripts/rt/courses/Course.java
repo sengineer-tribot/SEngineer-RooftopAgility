@@ -35,9 +35,8 @@ public abstract class Course {
 	protected boolean marks;
 	protected RSTile courseStart;
 	protected int maxTimeout;
-	protected RSTile[] finishToStartPath;
-
 	protected Obstacle[] course = {};
+	protected RSTile[] finishToStartPath;
 
 	// ~~~~~~~~
 
@@ -117,7 +116,7 @@ public abstract class Course {
 				abc2Support.runAntiBan();
 
 				if (obstacle.canFail()) {
-					if(Players.getAll().length > 0 && Utils.isTimeElapsed(SEngineerRooftops.lastHop, Numbers.FIVE_MINUTES)) {
+					if(Players.getAll().length > 0 && Utils.isTimeElapsed(SEngineerRooftops.lastHop, Numbers.FIFTEEN_MINUTES)) {
 						General.println("[Rooftops] Player detected! -- Hopping when we finish the lap.");
 						SEngineerRooftops.shouldHop = true;
 					}

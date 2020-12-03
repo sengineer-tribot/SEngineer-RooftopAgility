@@ -25,6 +25,7 @@ import scripts.rt.courses.VarrockCourse;
 import scripts.rt.paint.FluffeesPaint;
 import scripts.rt.paint.PaintInfo;
 import scripts.rt.support.QuestSupport;
+import scripts.rt.utils.Numbers;
 import scripts.rt.utils.Utils;
 
 @ScriptManifest(authors = {
