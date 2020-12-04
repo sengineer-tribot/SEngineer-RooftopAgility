@@ -15,7 +15,7 @@ public class ArdougneCourse extends Course {
 	public ArdougneCourse() {
 
 		name = "Ardougne Rooftop";
-		marks = true;
+		isRooftop = true;
 		courseStart = new RSTile(2673, 3297, 0);
 		maxTimeout = 10000;
 		

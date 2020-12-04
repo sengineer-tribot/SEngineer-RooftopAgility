@@ -15,7 +15,7 @@ public class AlKharidCourse extends Course {
 	public AlKharidCourse() {
 
 		name = "Al Kharid Rooftop";
-		marks = true;
+		isRooftop = true;
 		courseStart = new RSTile(3273, 3195, 0);
 		maxTimeout = 11000;
 		

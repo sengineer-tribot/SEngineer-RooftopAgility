@@ -15,7 +15,7 @@ public class DraynorCourse extends Course {
 	public DraynorCourse() {
 
 		name = "Draynor Rooftop";
-		marks = true;
+		isRooftop = true;
 		courseStart = new RSTile(310, 3279, 0);
 		maxTimeout = 10000;
 		

@@ -15,7 +15,7 @@ public class CanifisCourse extends Course {
 	public CanifisCourse() {
 
 		name = "Canifis Rooftop";
-		marks = true;
+		isRooftop = true;
 		courseStart = new RSTile(3507, 3487, 0);
 		maxTimeout = 10000;
 		

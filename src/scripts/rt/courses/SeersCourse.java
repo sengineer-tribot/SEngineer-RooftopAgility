@@ -15,7 +15,7 @@ public class SeersCourse extends Course {
 	public SeersCourse() {
 
 		name = "Seers Rooftop";
-		marks = true;
+		isRooftop = true;
 		courseStart = new RSTile(2729, 3487, 0);
 		maxTimeout = 10000;
 		

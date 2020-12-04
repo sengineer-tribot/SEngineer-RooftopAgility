@@ -15,7 +15,7 @@ public class RelekkaCourse extends Course {
 	public RelekkaCourse() {
 
 		name = "Relekka Rooftop";
-		marks = true;
+		isRooftop = true;
 		courseStart = new RSTile(2625, 3678, 0);
 		maxTimeout = 10000;
 		

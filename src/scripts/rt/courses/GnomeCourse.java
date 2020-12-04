@@ -15,7 +15,7 @@ public class GnomeCourse extends Course {
 	public GnomeCourse() {
 
 		name = "Gnome Agility";
-		marks = false;
+		isRooftop = false;
 		courseStart = new RSTile(2474, 3436, 0);
 		maxTimeout = 6000;
 		

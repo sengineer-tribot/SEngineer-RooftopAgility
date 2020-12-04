@@ -15,7 +15,7 @@ public class PollniveachCourse extends Course {
 	public PollniveachCourse() {
 
 		name = "Pollniveach Rooftop";
-		marks = true;
+		isRooftop = true;
 		courseStart = new RSTile(3352, 2963, 0);
 		maxTimeout = 10000;
 		

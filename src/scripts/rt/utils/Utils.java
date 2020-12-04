@@ -44,7 +44,7 @@ public class Utils {
 	/**
 	 * Dax Walks to a location if the Player is not already there
 	 *
-	 * @param destination - place to walk to
+	 * @param destination - tile to walk to
 	 */
 	public static void daxWalkTo(final Positionable destination) {
 		while (!isDistanceFrom(destination, 5)) {
@@ -55,12 +55,12 @@ public class Utils {
 	}
 	
 	/**
-	 * Web Walks to a location if the Player is not already there
+	 * Web Walks to a tile if the Player is not already there
 	 *
-	 * @param destination - place to walk to
+	 * @param destination - tile to walk to
 	 */
 	public static void webWalkTo(final Positionable destination) {
-		while (!isDistanceFrom(destination, 1)) {
+		while (!isDistanceFrom(destination, 0)) {
 			General.println("[Rooftops] WebWalking to " + destination.toString());
 			WebWalking.walkTo(destination);
 			Timing.waitCondition(() -> !Player.isMoving(), 5000);
@@ -81,16 +81,6 @@ public class Utils {
 		}
 
 		return isNear;
-	}
-
-	/**
-	 * Counts the number of items in an inventory
-	 *
-	 * @param item - name of the item to search for
-	 * @return true/false
-	 */
-	public static int getInventoryItemCount(final String item) {
-		return inventoryContains(item) ? Inventory.getCount(item) : 0;
 	}
 
 	/**
@@ -178,14 +168,14 @@ public class Utils {
 			return false;
 		}
 
-		final int count = getInventoryItemCount(name);
+		final int count = Inventory.getCount(name);
 
 		General.println("[Rooftops] Attempting to take nearby " + name);
 		if (items[0].click("Take")) {
-			Timing.waitCondition(() -> getInventoryItemCount(name) > count, 5000);
+			Timing.waitCondition(() -> Inventory.getCount(name) > count, 5000);
 		}
 
-		return getInventoryItemCount(name) > count;
+		return Inventory.getCount(name) > count;
 	}
 	
 	/**

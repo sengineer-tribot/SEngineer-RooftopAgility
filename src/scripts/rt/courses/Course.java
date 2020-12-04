@@ -3,6 +3,7 @@ package scripts.rt.courses;
 import org.tribot.api.General;
 import org.tribot.api.Timing;
 import org.tribot.api2007.GroundItems;
+import org.tribot.api2007.Inventory;
 import org.tribot.api2007.Player;
 import org.tribot.api2007.Players;
 import org.tribot.api2007.Skills;
@@ -13,6 +14,7 @@ import org.tribot.api2007.types.RSTile;
 
 import scripts.rt.main.SEngineerRooftops;
 import scripts.rt.support.ABC2Support;
+import scripts.rt.utils.Constants;
 import scripts.rt.utils.Utils;
 
 /**
@@ -31,16 +33,16 @@ public abstract class Course {
 	// ~~~~~~~~
 
 	protected String name;
-	protected boolean marks;
+	protected boolean isRooftop;
 	protected RSTile courseStart;
 	protected int maxTimeout;
-	protected Obstacle[] course = {};
+	protected Obstacle[] course;
 	protected RSTile[] finishToStartPath;
 
 	// ~~~~~~~~
-	
+
 	private boolean hasFallen;
-	
+
 	// ~~~~~~~~
 
 	public void doCourse() {
@@ -49,33 +51,32 @@ public abstract class Course {
 
 		while (true) {
 			hasFallen = false;
-			
+
 			for (final Obstacle obstacle : course) {
-				/**
-				 * TODO: Log out if we dont get XP
-				 */
 				if (!handleObstacle(obstacle)) {
 					hasFallen = true;
 					break;
 				}
 				General.sleep(500, 900);
 			}
-			
+
 			if (hasUnlockedNewCourse()) {
 				return;
 			}
-			
-			if(SEngineerRooftops.shouldHop) {
+
+			if (SEngineerRooftops.shouldHop) {
 				General.println("[Rooftops] Hopping world as player detected");
-				WorldHopper.changeWorld(WorldHopper.getRandomWorld(true));
-				SEngineerRooftops.lastHop = System.currentTimeMillis();
-				SEngineerRooftops.shouldHop = false;
+				if(WorldHopper.changeWorld(WorldHopper.getRandomWorld(true))) {
+					SEngineerRooftops.lastHop = System.currentTimeMillis();
+					SEngineerRooftops.shouldHop = false;
+				}
 			}
-			
-			if(finishToStartPath != null && !hasFallen) {
+
+			if (finishToStartPath != null && !hasFallen) {
 				General.println("[Rooftops] Walking path to course start");
 				Walking.walkPath(finishToStartPath);
-				Timing.waitCondition(() -> Utils.isDistanceFrom(finishToStartPath[finishToStartPath.length - 1], 0) && !Player.isMoving(), 3000);
+				Timing.waitCondition(() -> Utils.isDistanceFrom(finishToStartPath[finishToStartPath.length - 1], 0)
+						&& !Player.isMoving(), 3000);
 			}
 
 			General.sleep(100, 200);
@@ -90,16 +91,16 @@ public abstract class Course {
 	 * 
 	 */
 	public boolean lootMarks() {
-		int marks = Utils.getInventoryItemCount("Mark of grace");
+		int marks = Inventory.getCount("Mark of grace");
 
-		if (this.marks && GroundItems.findNearest("Mark of grace").length > 0) {
+		if (this.isRooftop && GroundItems.findNearest("Mark of grace").length > 0) {
 			General.println("[Rooftops] Mark of grace located");
 			if (Utils.takeNearbyStackable("Mark of grace", 25)) {
-				Timing.waitCondition(() -> Utils.getInventoryItemCount("Mark of grace") > marks, 10000);
+				Timing.waitCondition(() -> Inventory.getCount("Mark of grace") > marks, 10000);
 			}
 		}
 
-		return Utils.getInventoryItemCount("Mark of grace") > marks;
+		return Inventory.getCount("Mark of grace") > marks;
 	}
 
 	/**
@@ -120,12 +121,13 @@ public abstract class Course {
 		}
 
 		while (!obstacle.hasLanded()) {
-			if (Utils.interactWithObject(obstacle.getObstacle(), 1)) {
-				General.println("[Rooftops] Attempting to handle obstacle " + obstacle.getObstacle());
+			if (Utils.interactWithObject(obstacle.getName(), 1)) {
+				General.println("[Rooftops] Attempting to handle obstacle " + obstacle.getName());
 				abc2Support.runAntiBan();
 
 				if (obstacle.canFail()) {
-					if(Players.getAll().length > 0 && Utils.isTimeElapsed(SEngineerRooftops.lastHop, 6900000)) { // 15 mins
+					if (Players.getAll().length > 0
+							&& Utils.isTimeElapsed(SEngineerRooftops.lastHop, Constants.Numbers.FIFTEEN_MINUTES)) {
 						General.println("[Rooftops] Player detected! -- Hopping when we finish the lap.");
 						SEngineerRooftops.shouldHop = true;
 					}
@@ -135,15 +137,16 @@ public abstract class Course {
 				}
 			}
 
-			if (obstacle.canFail()) {
-				if (obstacle.hasFallen()) {
-					General.println("[Rooftops] Oops.. we've fallen");
-					return false;
-				}
+			if (obstacle.canFail() && obstacle.hasFallen()) {
+				General.println("[Rooftops] Oops.. we've fallen");
+				General.sleep(500, 700); // Wait for fall animation to finish
+				return false;
 			}
+			
+			General.sleep(100, 200);
 		}
 
-		General.sleep(200, 300);
+		General.sleep(200, 300); // Slight buffer before moving obstacles
 		General.println("[Rooftops] Successfully handled obstacle");
 
 		if (lootMarks()) {

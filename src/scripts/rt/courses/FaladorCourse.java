@@ -15,7 +15,7 @@ public class FaladorCourse extends Course {
 	public FaladorCourse() {
 
 		name = "Falador Rooftop";
-		marks = true;
+		isRooftop = true;
 		courseStart = new RSTile(3035, 3340, 0);
 		maxTimeout = 10000;
 		
