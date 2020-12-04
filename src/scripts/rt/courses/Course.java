@@ -13,7 +13,6 @@ import org.tribot.api2007.types.RSTile;
 
 import scripts.rt.main.SEngineerRooftops;
 import scripts.rt.support.ABC2Support;
-import scripts.rt.utils.Numbers;
 import scripts.rt.utils.Utils;
 
 /**
@@ -126,7 +125,7 @@ public abstract class Course {
 				abc2Support.runAntiBan();
 
 				if (obstacle.canFail()) {
-					if(Players.getAll().length > 0 && Utils.isTimeElapsed(SEngineerRooftops.lastHop, Numbers.FIFTEEN_MINUTES)) {
+					if(Players.getAll().length > 0 && Utils.isTimeElapsed(SEngineerRooftops.lastHop, 6900000)) { // 15 mins
 						General.println("[Rooftops] Player detected! -- Hopping when we finish the lap.");
 						SEngineerRooftops.shouldHop = true;
 					}

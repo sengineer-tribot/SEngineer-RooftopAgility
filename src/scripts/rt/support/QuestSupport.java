@@ -38,23 +38,6 @@ public class QuestSupport {
 			return Game.getSetting(setting) >= complete;
 		}
 
-		/**
-		 * Checks if the quest is started, but not complete. (Yellow)
-		 *
-		 * @return true if started, false otherwise
-		 */
-		public boolean isStarted() {
-			return Game.getSetting(setting) != notStarted && !isComplete();
-		}
-
-		/**
-		 * Checks if the quest is not started. (Red)
-		 *
-		 * @return true if not started, false otherwise
-		 */
-		public boolean isNotStarted() {
-			return Game.getSetting(setting) == notStarted;
-		}
     }
 
 }

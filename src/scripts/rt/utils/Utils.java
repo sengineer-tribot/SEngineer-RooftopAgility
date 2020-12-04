@@ -138,7 +138,7 @@ public class Utils {
 		final boolean isInteracted = DynamicClicking.clickRSObject(objects[0], button);
 		General.println("[Rooftops] Interacted with " + object + ": " + isInteracted);
 
-		General.sleep(Numbers.TWO_TICKS, Numbers.THREE_TICKS);
+		General.sleep(1200, 1800);
 
 		return isInteracted;
 	}
@@ -182,7 +182,7 @@ public class Utils {
 
 		General.println("[Rooftops] Attempting to take nearby " + name);
 		if (items[0].click("Take")) {
-			Timing.waitCondition(() -> getInventoryItemCount(name) > count, Numbers.FIVE_SECONDS);
+			Timing.waitCondition(() -> getInventoryItemCount(name) > count, 5000);
 		}
 
 		return getInventoryItemCount(name) > count;
