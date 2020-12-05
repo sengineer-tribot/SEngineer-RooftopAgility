@@ -20,7 +20,7 @@ public class RelekkaCourse extends Course {
 		maxTimeout = 10000;
 		
 		course = new Obstacle[] {
-				new Obstacle("Rough wall", courseStart, new RSArea(new RSTile(2625, 3676, 3), new RSTile(2625, 3676, 3)), false),
+				new Obstacle("Rough wall", null, new RSArea(new RSTile(2625, 3676, 3), new RSTile(2625, 3676, 3)), false),
 				new Obstacle("Gap", null, new RSArea(new RSTile(2622, 3668, 3), new RSTile(2622, 3668, 3)), true),
 				new Obstacle("Tightrope", null, new RSArea(new RSTile(2627, 3654, 3), new RSTile(2627, 3654, 3)), true),
 				new Obstacle("Gap", null, new RSArea(new RSTile(2639, 3653, 3), new RSTile(2639, 3653, 3)), true),

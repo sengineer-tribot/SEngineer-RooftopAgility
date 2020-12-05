@@ -20,7 +20,7 @@ public class VarrockCourse extends Course {
 		maxTimeout = 12000;
 
 		course = new Obstacle[] {
-				new Obstacle("Rough wall", courseStart, new RSArea(new RSTile(3219, 3414, 3), new RSTile(3219, 3414, 3)), false),
+				new Obstacle("Rough wall", null, new RSArea(new RSTile(3219, 3414, 3), new RSTile(3219, 3414, 3)), false),
 				new Obstacle("Clothes line", null, new RSArea(new RSTile(3208, 3414, 3), new RSTile(3208, 3414, 3)), true),
 				new Obstacle("Gap", null, new RSArea(new RSTile(3197, 3416, 1), new RSTile(3197, 3416, 1)), true),
 				new Obstacle("Wall", null, new RSArea(new RSTile(3192, 3406, 3), new RSTile(3192, 3406, 3)), true),

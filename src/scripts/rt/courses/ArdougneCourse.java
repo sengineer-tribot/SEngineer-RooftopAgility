@@ -20,7 +20,7 @@ public class ArdougneCourse extends Course {
 		maxTimeout = 10000;
 		
 		course = new Obstacle[] {
-				new Obstacle("Wooden Beams", courseStart, new RSArea(new RSTile(2671, 3299, 3), new RSTile(2671, 3299, 3)), false),
+				new Obstacle("Wooden Beams", null, new RSArea(new RSTile(2671, 3299, 3), new RSTile(2671, 3299, 3)), false),
 				new Obstacle("Gap", new RSTile(2671, 3309, 3), new RSArea(new RSTile(2665, 3318, 3), new RSTile(2665, 3318, 3)), true),
 				new Obstacle("Plank", null, new RSArea(new RSTile(2657, 3318, 3), new RSTile(2657, 3318, 3)), true),
 				new Obstacle("Gap", null, new RSArea(new RSTile(2653, 3314, 3), new RSTile(2653, 3314, 3)), true),

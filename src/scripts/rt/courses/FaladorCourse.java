@@ -20,7 +20,7 @@ public class FaladorCourse extends Course {
 		maxTimeout = 10000;
 		
 		course = new Obstacle[] {
-				new Obstacle("Rough wall", courseStart, new RSArea(new RSTile(3036, 3342, 3), new RSTile(3036, 3342, 3)), false),
+				new Obstacle("Rough wall", null, new RSArea(new RSTile(3036, 3342, 3), new RSTile(3036, 3342, 3)), false),
 				new Obstacle("Tightrope", null, new RSArea(new RSTile(3047, 3344, 3), new RSTile(3047, 3344, 3)), true),
 				new Obstacle("Hand holds", null, new RSArea(new RSTile(3050, 3357, 3), new RSTile(3050, 3357, 3)), true),
 				new Obstacle("Gap", null, new RSArea(new RSTile(3048, 3361, 3), new RSTile(3048, 3361, 3)), true),

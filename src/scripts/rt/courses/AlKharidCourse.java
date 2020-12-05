@@ -20,7 +20,7 @@ public class AlKharidCourse extends Course {
 		maxTimeout = 11000;
 		
 		course = new Obstacle[] {
-				new Obstacle("Rough wall", courseStart, new RSArea(new RSTile(3273, 3192, 3), new RSTile(3273, 3192, 3)), false),
+				new Obstacle("Rough wall", null, new RSArea(new RSTile(3273, 3192, 3), new RSTile(3273, 3192, 3)), false),
 				new Obstacle("Tightrope", null, new RSArea(new RSTile(3271, 3173, 3), new RSTile(3272, 3172, 3)), true),
 				new Obstacle("Cable", null, new RSArea(new RSTile(3284, 3166, 3), new RSTile(3284, 3166, 3)), true),
 				new Obstacle("Zip line", new RSTile(3300, 3163, 3), new RSArea(new RSTile(3315, 3163, 1), new RSTile(3315, 3163, 1)), true),

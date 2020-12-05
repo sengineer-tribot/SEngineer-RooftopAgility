@@ -2,6 +2,7 @@ package scripts.rt.courses;
 
 import org.tribot.api.General;
 import org.tribot.api.Timing;
+import org.tribot.api2007.Camera;
 import org.tribot.api2007.GroundItems;
 import org.tribot.api2007.Inventory;
 import org.tribot.api2007.Player;
@@ -76,8 +77,15 @@ public abstract class Course {
 				General.println("[Rooftops] Walking path to course start");
 				Walking.walkPath(finishToStartPath);
 				Timing.waitCondition(() -> Utils.isDistanceFrom(finishToStartPath[finishToStartPath.length - 1], 0)
-						&& !Player.isMoving(), 3000);
+						&& !Player.isMoving(), 10000);
 			}
+			
+			if(hasFallen) {
+				General.println("[Rooftops] DaxWalking to " + name + " course start");
+				Utils.daxWalkTo(courseStart);
+			}
+			
+			Camera.setCameraAngle(General.random(70, 100));
 
 			General.sleep(100, 200);
 		}

@@ -20,7 +20,7 @@ public class PollniveachCourse extends Course {
 		maxTimeout = 10000;
 		
 		course = new Obstacle[] {
-				new Obstacle("Basket", courseStart, new RSArea(new RSTile(3351, 2964, 1), new RSTile(3351, 2964, 1)), false),
+				new Obstacle("Basket", null, new RSArea(new RSTile(3351, 2964, 1), new RSTile(3351, 2964, 1)), false),
 				new Obstacle("Market stall", null, new RSArea(new RSTile(3352, 2973, 1), new RSTile(3352, 2973, 1)), true),
 				new Obstacle("Banner", null, new RSArea(new RSTile(3360, 2977, 1), new RSTile(3360, 2977, 1)), true),
 				new Obstacle("Gap", null, new RSArea(new RSTile(3366, 2976, 1), new RSTile(3366, 2976, 1)), true),

@@ -20,7 +20,7 @@ public class DraynorCourse extends Course {
 		maxTimeout = 10000;
 		
 		course = new Obstacle[] {
-				new Obstacle("Rough wall", courseStart, new RSArea(new RSTile(3102, 3279, 3), new RSTile(3102, 3279, 3)), false),
+				new Obstacle("Rough wall", null, new RSArea(new RSTile(3102, 3279, 3), new RSTile(3102, 3279, 3)), false),
 				new Obstacle("Tightrope", null, new RSArea(new RSTile(3090, 3276, 3), new RSTile(3090, 3276, 3)), true),
 				new Obstacle("Tightrope", null, new RSArea(new RSTile(3094, 3267, 3), new RSTile(3092, 3266, 3)), true),
 				new Obstacle("Narrow wall", null, new RSArea(new RSTile(3088, 3261, 3), new RSTile(3088, 3261, 3)), true),
